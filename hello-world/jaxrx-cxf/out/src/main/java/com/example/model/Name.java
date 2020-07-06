@@ -1,4 +1,4 @@
-package io.swagger.model;
+package com.example.model;
 
 import javax.validation.constraints.*;
 

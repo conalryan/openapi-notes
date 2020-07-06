@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package io.swagger.api;
+package com.example.api;
 
 import org.junit.Test;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package io.swagger.api;
+package com.example.api;
 
 
 import java.io.InputStream;

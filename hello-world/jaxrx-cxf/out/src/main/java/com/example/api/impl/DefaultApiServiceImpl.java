@@ -1,6 +1,6 @@
-package io.swagger.api.impl;
+package com.example.api.impl;
 
-import io.swagger.api.*;
+import com.example.api.*;
 
 import java.io.InputStream;
 import java.io.OutputStream;
