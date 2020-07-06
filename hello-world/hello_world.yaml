@@ -1,0 +1,32 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Hello world
+basePath: /v1
+paths:
+  /hello:
+    get:
+      operationId: sayHello
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          required: true
+          type: string
+          minLength: 0
+          maxLength: 255
+      responses:
+        '200':
+          description: "OK"
+          schema:
+            $ref: '#/definitions/name'
+        '405':
+          description: Invalid input
+definitions:
+  name:
+    type: string
+    minLength: 0
+    maxLength: 100
