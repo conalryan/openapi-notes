@@ -1,0 +1,27 @@
+swagger: '2.0'
+info:
+  title: API Title
+  version: '1.0'
+# Generated with cmd + shift + P new openapi
+host: api.server.test
+basePath: /
+schemes:
+  - https
+paths:
+  /kitty:
+    get:
+      description: 'here kitty kitty'
+      responses:
+        '200':
+          description: OK
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+
+    post:
+      description: 'post some test stuff'
+      responses:
+        '200':
+          description: OK

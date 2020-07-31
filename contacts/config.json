@@ -1,0 +1,9 @@
+{
+    "modelPackage": "com.example.model",
+    "apiPackage" : "com.example.api",
+    "groupId": "com.example",
+    "artifactId": "contacts",
+    "artifactVersion": "1.0-SNAPSHOT",
+    "sourceFolder": "src/main/java",
+    "implFolder": "src/main/java"
+}

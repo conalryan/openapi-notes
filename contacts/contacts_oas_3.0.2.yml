@@ -1,0 +1,114 @@
+openapi: '3.0.2'
+info:
+  title: Contacts
+  version: '1.0'
+servers:
+  - url: /v1
+    description: Optional server description, e.g. test (development) server
+paths:
+  /contacts:
+    get:
+      summary: Returns a list of contacts
+      description: Calls an external service and returns an `array` of contacts `objects`
+      responses:
+        '200':
+          description: A JSON array of contacts
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+
+  /contact/{contactId}:
+    get:
+      summary: Returns a contact by ID.
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          description: The ID of the contact to return.
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          description: The specified contact ID is invalid (not a number).
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound' 
+        default:
+          description: Unexpected error
+  
+  /contact:
+    post:
+      summary: Creates a contact.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses: 
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+
+# Descriptions of common components
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  
+  schemas:
+    # Schema for error response body
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+    Contact:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        creationDate:
+          type: string
+          format: date  # or date-time "2018-03-20" vs "2018-03-20T09:12:28Z".
+      # Both properties are required
+      required:  
+        - id
+        - name
